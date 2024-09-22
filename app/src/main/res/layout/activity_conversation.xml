@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/rectangle"/>
             <TextView
+                android:maxLines="5"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

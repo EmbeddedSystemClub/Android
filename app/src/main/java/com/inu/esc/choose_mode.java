@@ -33,7 +33,7 @@ public class choose_mode extends AppCompatActivity {
         chooseModeDefault.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent  i = new Intent(getApplicationContext(), DefaultResoningActivity.class);
+                Intent  i = new Intent(getApplicationContext(), conversation.class);
                 startActivity(i);
             }
         });

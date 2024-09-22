@@ -3,6 +3,7 @@ package com.inu.esc;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import java.util.UUID;
 public class Login extends AppCompatActivity {
     ImageView img;
     BluetoothService mService;
+    BluetootConServ bluetootConServ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,36 +34,10 @@ public class Login extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Intent i = new Intent(getApplicationContext(),BluetootConServ.class);
+        startService(i);
         img = findViewById(R.id.login_btn);
-        BluetoothConfiguration config = new BluetoothConfiguration();
-        config.context = getApplicationContext();
-        config.bluetoothServiceClass = BluetoothService.class;
-        config.bufferSize = 1024;
-        config.characterDelimiter = '\n';
-        config.deviceName = "Phone";
-        config.callListenersInMainThread = true;
-        config.uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb"); // Required
-        BluetoothService.init(config);
-        mService = BluetoothService.getDefaultInstance();
-        mService.setOnScanCallback(new BluetoothService.OnBluetoothScanCallback() {
-            @Override
-            public void onDeviceDiscovered(BluetoothDevice device, int rssi) throws SecurityException {
-                if (device.getName()!=null) {
-                    Toast.makeText(Login.this, "블루투스 연결됨", Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onStartScan() {
-
-            }
-
-            @Override
-            public void onStopScan() {
-
-            }
-        });
-        mService.startScan();
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

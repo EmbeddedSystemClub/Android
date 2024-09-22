@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ESC</string>
+    <string name="inten">SERVICE_TO_ACTIVITY</string>
 </resources>

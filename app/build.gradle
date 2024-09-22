@@ -30,10 +30,14 @@ android {
         cleanedAnnotations
         implementation.exclude group: 'org.jetbrains' , module:'annotations'
     }
+    packagingOptions {
+        exclude 'META-INF/versions/9/OSGI-INF/MANIFEST.MF'
+    }
 }
 
 dependencies {
     implementation "androidx.room:room-runtime:2.6.1"
+    implementation libs.identity.jvm
     annotationProcessor "androidx.room:room-compiler:2.6.1"
     // https://mvnrepository.com/artifact/androidx.room/room-compiler
     implementation group: 'androidx.room', name: 'room-compiler', version: '2.6.1'
