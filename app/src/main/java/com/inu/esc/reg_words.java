@@ -49,7 +49,6 @@ public class reg_words extends AppCompatActivity {
                 db.keywordDAO().addKeyword(keyword1);
                 //bluetoothWriter.write(keyword1.getImportant()+"."+keyword1.getKeyword());
                 Toast.makeText(reg_words.this, "등록되었습니다.", Toast.LENGTH_SHORT).show();
-                startService(new Intent(getApplicationContext(),BluetootConServ.class));
             }
         });
 
